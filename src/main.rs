@@ -6,20 +6,20 @@ fn main() {
     println!("Guess the number!");
 
     loop {
+        let mut guess = String::new();
         let secret_number = rand::thread_rng().gen_range(1, 10);
 
-        println!("Please input your guess in range from 1 to 10");
-    
-        let mut guess = String::new();
+        println!("Input your guess in range from 1 to 10");
     
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line");
-    
+        
+        // Convert guess from String to integer
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                println!("Please, enter a number!");
+                println!("Enter a number, please!");
                 continue
             }
         };
